@@ -1,0 +1,2 @@
+// This is a placeholder document to establish this folder.
+// All game save files will be saved to this folder.
