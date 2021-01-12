@@ -1,19 +1,16 @@
-# connectfour
+# Description
 A twist on a classic Connect Four game
 
-# Description
 =:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
 CIS 120 Game Project README
 PennKey: ********
 =:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
 
-===================
-=: Core Concepts :=
-===================
+# Core Concepts
 
-- List the four core concepts, the features they implement, and why each feature
-  is an appropriate use of the concept. Incorporate the feedback you got after
-  submitting your proposal.
+List the four core concepts, the features they implement, and why each feature
+is an appropriate use of the concept. Incorporate the feedback you got after
+submitting your proposal.
 
   1. 2-D Arrays. A standard Connect Four board consists of a 6 by 7 slot board (that is, 6 rows and 
   7 columns). I will be representing this game board using a 2-D Array of integers to store the 
@@ -53,12 +50,10 @@ PennKey: ********
   store, in some order, a list of moves performed. Each of these can be testable via JUnit to ensure
   working order and coverage of test cases.
 
-=========================
-=: Your Implementation :=
-=========================
+# My Implementation
 
-- Provide an overview of each of the classes in your code, and what their
-  function is in the overall game.
+Provide an overview of each of the classes in your code, and what their
+function is in the overall game.
   
   ConnectFour.java: This class provides the core logic for the game's functionality, including
   how to place pieces (+ simulate gravity), how to track which player's turn it is, and laying out
@@ -85,9 +80,8 @@ PennKey: ********
   The game state can be modified by adding a piece, undoing a move, saving the state, or loading an 
   existing game and pre-populating the game board.
 
-
-- Were there any significant stumbling blocks while you were implementing your
-  game (related to your design, or otherwise)?
+Were there any significant stumbling blocks while you were implementing your
+game (related to your design, or otherwise)?
   
   Not really, implementation went relatively smoothly. The only thing that required a little more 
   effort was coordinating the game saving and loading an existing game functionalities, since both 
@@ -99,9 +93,8 @@ PennKey: ********
   keeping track of the current player. Further, exceptions needed to be handled here, which added
   another layer of complexity.
 
-
-- Evaluate your design. Is there a good separation of functionality? How well is
-  private state encapsulated? What would you refactor, if given the chance?
+Evaluate your design. Is there a good separation of functionality? How well is
+private state encapsulated? What would you refactor, if given the chance?
   
   Based on the above description of each class, I think this design represents a good separation of
   functionality. The Game Class implements functionality for all of the tangential components of the
@@ -115,7 +108,7 @@ PennKey: ********
   with the viewer/controller functionalities. Lastly, the FileLineIterator is a helper wrapper 
   supporting the File IO functionality of the game. 
   
-  I would say the private states are well encapsulated, as there isn't any way for the classes to 
+  The private states are well encapsulated, as there isn't any way for the classes to 
   modify each other's private states, especially the private states relating to critical game states
   and logic components within the ConnectFour Class. Whenever the underlying state of the game in 
   the ConnectFour Class needs to be accessed, say, by the GameBoard Class for file saving purposes,
@@ -135,14 +128,10 @@ PennKey: ********
   I was able to keep the responsibilities of each class distinct and separated, preventing any other
   encapsualtion related issues.
 
+# External Resources
 
-
-========================
-=: External Resources :=
-========================
-
-- Cite any external resources (libraries, images, tutorials, etc.) that you may
-  have used while implementing your game.
+Cite any external resources (libraries, images, tutorials, etc.) that you may
+have used while implementing your game.
   
   I didn't use any external resources to construct this game. I just repurposed the original
   turn-based game starter code provided on Piazza. I also looked at some code from earlier 
