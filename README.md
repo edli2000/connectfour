@@ -1,11 +1,6 @@
 # Description
 A twist on a classic Connect Four game
 
-=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
-CIS 120 Game Project README
-PennKey: ********
-=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=:=
-
 # Core Concepts
 
 List the four core concepts, the features they implement, and why each feature
