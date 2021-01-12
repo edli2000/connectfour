@@ -50,17 +50,17 @@ submitting your proposal.
 Provide an overview of each of the classes in your code, and what their
 function is in the overall game.
   
-  ConnectFour.java: This class provides the core logic for the game's functionality, including
+  1. ConnectFour.java: This class provides the core logic for the game's functionality, including
   how to place pieces (+ simulate gravity), how to track which player's turn it is, and laying out
   the logic for the win conditions. It also contains methods that "do the work" of the buttons. This
   class manages the state for key components of the game, such as the current player turn the 
   winner of the game, etc.
   
-  FileLineIterator.java: This class provides a wrapper around an iterator such that it can read
+  2. FileLineIterator.java: This class provides a wrapper around an iterator such that it can read
   a file line-by-line, which is integral to the save/load game functionality. Whenever a user loads
   a new game, this class helps the ConnectFour class pre-populate the game board.
   
-  Game.java: This class provides the visual and controllable aspects of the game. It consists of
+  3. Game.java: This class provides the visual and controllable aspects of the game. It consists of
   rendering a visual user interface using Java Swing, such as rendering a home screen with different
   button options, an instructions page consisting of text and a back button, a new game screen that 
   is just a blank, new game board, and a load game screen that includes a text input options for the
@@ -68,7 +68,7 @@ function is in the overall game.
   This class implements the action listeners for each button click and redirects them to a new
   method in GameBoard to modify the game state.
   
-  GameBoard.java: This class keeps track of the game state in a visual format is provides the 
+  4. GameBoard.java: This class keeps track of the game state in a visual format is provides the 
   interface by which the users can interact with the game. It contains the main 2D array game board
   as well as the pieces and the status bar to indicate the status of the gameplay. Also, it includes
   the action listeners for the mouse clicks on each column and helps modify the pieces accordingly.
@@ -78,7 +78,7 @@ function is in the overall game.
 Were there any significant stumbling blocks while you were implementing your
 game (related to your design, or otherwise)?
   
-  Not really, implementation went relatively smoothly. The only thing that required a little more 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not really, implementation went relatively smoothly. The only thing that required a little more 
   effort was coordinating the game saving and loading an existing game functionalities, since both 
   needed very strict criteria in order to function properly. The save needed to save the list of 
   moves up until that point in an orderly manner, and cannot function if the game is over, and the
@@ -91,7 +91,7 @@ game (related to your design, or otherwise)?
 Evaluate your design. Is there a good separation of functionality? How well is
 private state encapsulated? What would you refactor, if given the chance?
   
-  Based on the above description of each class, I think this design represents a good separation of
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Based on the above description of each class, I think this design represents a good separation of
   functionality. The Game Class implements functionality for all of the tangential components of the
   game, such as the pop up window frames, screens for user interaction, and button functionality. 
   All calls from the Game Class is made to the GameBoard Class. The GameBoard class provides the 
@@ -103,7 +103,7 @@ private state encapsulated? What would you refactor, if given the chance?
   with the viewer/controller functionalities. Lastly, the FileLineIterator is a helper wrapper 
   supporting the File IO functionality of the game. 
   
-  The private states are well encapsulated, as there isn't any way for the classes to 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The private states are well encapsulated, as there isn't any way for the classes to 
   modify each other's private states, especially the private states relating to critical game states
   and logic components within the ConnectFour Class. Whenever the underlying state of the game in 
   the ConnectFour Class needs to be accessed, say, by the GameBoard Class for file saving purposes,
@@ -112,7 +112,7 @@ private state encapsulated? What would you refactor, if given the chance?
   manipulate the state of the game in an unintended or malicious manner. Because the private states
   of the game model are insulated from outside manipulation, these states are well encapsulated. 
   
-  Around halway through the project, I realized the methods to modify the internal state of the 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Around halway through the project, I realized the methods to modify the internal state of the 
   game with respect to saving the current game state and pre-populating the game state with a loaded
   partially-complete game were both being run in the GameBoard Class, meaning I needed to access the
   list of move being held in the ConnectFour Class. This disrupted the chain of command, since 
@@ -128,7 +128,6 @@ private state encapsulated? What would you refactor, if given the chance?
 Cite any external resources (libraries, images, tutorials, etc.) that you may
 have used while implementing your game.
   
-  I didn't use any external resources to construct this game. I just repurposed the original
-  turn-based game starter code provided on Piazza. I also looked at some code from earlier 
-  homework assignments for inspiration; for example, the file path input was repurposed from the 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I didn't use any external resources to construct this game. I looked at some code from earlier 
+  homework assignments for inspiration; for example, the file path input was inspired from the 
   Pennstagram assignment, and the save to file option was inspired from the TwitterBot account.
