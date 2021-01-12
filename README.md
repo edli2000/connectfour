@@ -50,78 +50,78 @@ submitting your proposal.
 Provide an overview of each of the classes in your code, and what their
 function is in the overall game.
   
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ConnectFour.java: This class provides the core logic for the game's functionality, including
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; how to place pieces (+ simulate gravity), how to track which player's turn it is, and laying out
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the logic for the win conditions. It also contains methods that "do the work" of the buttons. This
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class manages the state for key components of the game, such as the current player turn the 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; winner of the game, etc.
+  1. ConnectFour.java: This class provides the core logic for the game's functionality, including
+  how to place pieces (+ simulate gravity), how to track which player's turn it is, and laying out
+  the logic for the win conditions. It also contains methods that "do the work" of the buttons. This
+  class manages the state for key components of the game, such as the current player turn the 
+  winner of the game, etc.
   
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FileLineIterator.java: This class provides a wrapper around an iterator such that it can read
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a file line-by-line, which is integral to the save/load game functionality. Whenever a user loads
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a new game, this class helps the ConnectFour class pre-populate the game board.
+  2. FileLineIterator.java: This class provides a wrapper around an iterator such that it can read
+  a file line-by-line, which is integral to the save/load game functionality. Whenever a user loads
+  a new game, this class helps the ConnectFour class pre-populate the game board.
   
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Game.java: This class provides the visual and controllable aspects of the game. It consists of
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rendering a visual user interface using Java Swing, such as rendering a home screen with different
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; button options, an instructions page consisting of text and a back button, a new game screen that 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is just a blank, new game board, and a load game screen that includes a text input options for the
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file path and the resulting partially-completed game board that is generated from the text file.
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This class implements the action listeners for each button click and redirects them to a new
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; method in GameBoard to modify the game state.
+  3. Game.java: This class provides the visual and controllable aspects of the game. It consists of
+  rendering a visual user interface using Java Swing, such as rendering a home screen with different
+  button options, an instructions page consisting of text and a back button, a new game screen that 
+  is just a blank, new game board, and a load game screen that includes a text input options for the
+  file path and the resulting partially-completed game board that is generated from the text file.
+  This class implements the action listeners for each button click and redirects them to a new
+  method in GameBoard to modify the game state.
   
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GameBoard.java: This class keeps track of the game state in a visual format is provides the 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interface by which the users can interact with the game. It contains the main 2D array game board
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; as well as the pieces and the status bar to indicate the status of the gameplay. Also, it includes
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the action listeners for the mouse clicks on each column and helps modify the pieces accordingly.
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The game state can be modified by adding a piece, undoing a move, saving the state, or loading an 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; existing game and pre-populating the game board.
+  4. GameBoard.java: This class keeps track of the game state in a visual format is provides the 
+  interface by which the users can interact with the game. It contains the main 2D array game board
+  as well as the pieces and the status bar to indicate the status of the gameplay. Also, it includes
+  the action listeners for the mouse clicks on each column and helps modify the pieces accordingly.
+  The game state can be modified by adding a piece, undoing a move, saving the state, or loading an 
+  existing game and pre-populating the game board.
 
 Were there any significant stumbling blocks while you were implementing your
 game (related to your design, or otherwise)?
   
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Not really, implementation went relatively smoothly. The only thing that required a little more 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; effort was coordinating the game saving and loading an existing game functionalities, since both 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; needed very strict criteria in order to function properly. The save needed to save the list of 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; moves up until that point in an orderly manner, and cannot function if the game is over, and the
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; file name needed to be distinct each time, and needed to override existing file names/data 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; whenever the game/home screen was re-launched. The load existing game functionality needed to make
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the right moves in the right order, while updating the status indicated on the game board and 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; keeping track of the current player. Further, exceptions needed to be handled here, which added
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; another layer of complexity.
+  effort was coordinating the game saving and loading an existing game functionalities, since both 
+  needed very strict criteria in order to function properly. The save needed to save the list of 
+  moves up until that point in an orderly manner, and cannot function if the game is over, and the
+  file name needed to be distinct each time, and needed to override existing file names/data 
+  whenever the game/home screen was re-launched. The load existing game functionality needed to make
+  the right moves in the right order, while updating the status indicated on the game board and 
+  keeping track of the current player. Further, exceptions needed to be handled here, which added
+  another layer of complexity.
 
 Evaluate your design. Is there a good separation of functionality? How well is
 private state encapsulated? What would you refactor, if given the chance?
   
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Based on the above description of each class, I think this design represents a good separation of
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; functionality. The Game Class implements functionality for all of the tangential components of the
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; game, such as the pop up window frames, screens for user interaction, and button functionality. 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All calls from the Game Class is made to the GameBoard Class. The GameBoard class provides the 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ways to interact and manipulate the underlying game state, either by controllers such as mouse 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; clicks or by altering the display of the game board in response to some change in state. All calls
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from the GameBoard Class are made to either the FileLineIterator Class (once) or to the underlying
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; model of the game state within the ConnectFour Class. The ConnectFour Class represents the 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; underlying model and contains the logic of the game and it is disconnected from but communicates 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; with the viewer/controller functionalities. Lastly, the FileLineIterator is a helper wrapper 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; supporting the File IO functionality of the game. 
+  functionality. The Game Class implements functionality for all of the tangential components of the
+  game, such as the pop up window frames, screens for user interaction, and button functionality. 
+  All calls from the Game Class is made to the GameBoard Class. The GameBoard class provides the 
+  ways to interact and manipulate the underlying game state, either by controllers such as mouse 
+  clicks or by altering the display of the game board in response to some change in state. All calls
+  from the GameBoard Class are made to either the FileLineIterator Class (once) or to the underlying
+  model of the game state within the ConnectFour Class. The ConnectFour Class represents the 
+  underlying model and contains the logic of the game and it is disconnected from but communicates 
+  with the viewer/controller functionalities. Lastly, the FileLineIterator is a helper wrapper 
+  supporting the File IO functionality of the game. 
   
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The private states are well encapsulated, as there isn't any way for the classes to 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modify each other's private states, especially the private states relating to critical game states
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and logic components within the ConnectFour Class. Whenever the underlying state of the game in 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the ConnectFour Class needs to be accessed, say, by the GameBoard Class for file saving purposes,
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the GameBoard Class only receives a clone of the list of moves made, for example, so there is no 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; way for the methods within GameBoard (or any other class, for that matter), to directly alter or 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; manipulate the state of the game in an unintended or malicious manner. Because the private states
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; of the game model are insulated from outside manipulation, these states are well encapsulated. 
+  modify each other's private states, especially the private states relating to critical game states
+  and logic components within the ConnectFour Class. Whenever the underlying state of the game in 
+  the ConnectFour Class needs to be accessed, say, by the GameBoard Class for file saving purposes,
+  the GameBoard Class only receives a clone of the list of moves made, for example, so there is no 
+  way for the methods within GameBoard (or any other class, for that matter), to directly alter or 
+  manipulate the state of the game in an unintended or malicious manner. Because the private states
+  of the game model are insulated from outside manipulation, these states are well encapsulated. 
   
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Around halway through the project, I realized the methods to modify the internal state of the 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; game with respect to saving the current game state and pre-populating the game state with a loaded
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; partially-complete game were both being run in the GameBoard Class, meaning I needed to access the
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list of move being held in the ConnectFour Class. This disrupted the chain of command, since 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; classes are now reaching into each other's domains. Thus, I decided to refactor my code and have 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a helper function in GameBoard call a class in ConnectFour that actually does the altering of the
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; internal game state (either saving a copy/clone of the list of moves to a text file or 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pre-populating the current board with a list of moves from a text file). Through this refactoring,
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I was able to keep the responsibilities of each class distinct and separated, preventing any other
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; encapsualtion related issues.
+  game with respect to saving the current game state and pre-populating the game state with a loaded
+  partially-complete game were both being run in the GameBoard Class, meaning I needed to access the
+  list of move being held in the ConnectFour Class. This disrupted the chain of command, since 
+  classes are now reaching into each other's domains. Thus, I decided to refactor my code and have 
+  a helper function in GameBoard call a class in ConnectFour that actually does the altering of the
+  internal game state (either saving a copy/clone of the list of moves to a text file or 
+  pre-populating the current board with a list of moves from a text file). Through this refactoring,
+  I was able to keep the responsibilities of each class distinct and separated, preventing any other
+  encapsualtion related issues.
 
 # External Resources
 
@@ -129,5 +129,5 @@ Cite any external resources (libraries, images, tutorials, etc.) that you may
 have used while implementing your game.
   
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I didn't use any external resources to construct this game. I looked at some code from earlier 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; homework assignments for inspiration; for example, the file path input was inspired from the 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pennstagram assignment, and the save to file option was inspired from the TwitterBot account.
+  homework assignments for inspiration; for example, the file path input was inspired from the 
+  Pennstagram assignment, and the save to file option was inspired from the TwitterBot account.
